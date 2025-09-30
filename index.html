@@ -27,9 +27,31 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
   
-  <!-- GoatCounter Analytics -->
+  <!-- GoatCounter Analytics with Fallback -->
   <script data-goatcounter="https://iyan-cv.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+  
+  <!-- Fallback for ad blockers -->
+  <script>
+  setTimeout(function() {
+    if (!window.goatcounter || !window.goatcounter.count) {
+      // Manual tracking if script blocked
+      var endpoint = 'https://iyan-cv.goatcounter.com/count';
+      var data = new URLSearchParams({
+        p: location.pathname + location.search,
+        r: document.referrer,
+        t: document.title
+      });
+      
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(endpoint, data);
+      } else {
+        var img = new Image();
+        img.src = endpoint + '?' + data.toString();
+      }
+    }
+  }, 1000);
+  </script>
 </head>
 <body>
 <header id="title-block-header">
