@@ -27,42 +27,9 @@
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
   
-  <!-- Stealth Analytics -->
-  <script>
-  (function() {
-    var d = document;
-    var s = d.createElement('script');
-    var endpoint = 'aHR0cHM6Ly9peWFuLWN2LmdvYXRjb3VudGVyLmNvbS9jb3VudA=='; // base64 encoded
-    
-    // Decode endpoint
-    var url = atob(endpoint);
-    
-    // Custom tracking function
-    function track() {
-      var params = {
-        p: location.pathname,
-        r: d.referrer || '',
-        t: d.title || 'CV',
-        ts: Date.now()
-      };
-      
-      // Use fetch with different headers to avoid detection
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: Object.keys(params).map(k => k + '=' + encodeURIComponent(params[k])).join('&')
-      }).catch(function() {
-        // Silent fail if blocked
-      });
-    }
-    
-    // Delayed execution to avoid detection
-    setTimeout(track, Math.random() * 2000 + 1000);
-  })();
-  </script>
+  <!-- Simple GoatCounter - Let it be blocked if user wants privacy -->
+  <script data-goatcounter="https://iyan-cv.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header id="title-block-header">
